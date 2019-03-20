@@ -1,0 +1,14 @@
+<p>Concatenating a VARCHAR2 value with NULL is no-op. So, the NULL value should be removed.</p>
+
+<p>A concatenation of any other datatype with NULL will cause a implicit cast to VARCHAR2. If this is the desired behavior,
+replace the concatenation by a TO_CHAR call to make the intention explicit. See this example:</p>
+
+<pre>
+var := NVL(''||id, 'Empty');
+</pre>
+
+<p>You should use this:</p>
+
+<pre>
+var := NVL(TO_CHAR(id), 'Empty');
+</pre>
